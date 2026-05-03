@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish 121 · Semana 5 · Repaso y Examen Parcial</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-light: #243561;
+    --terracotta: #c4522a;
+    --terra-light: #e07048;
+    --gold: #d4a537;
+    --gold-light: #f0c45a;
+    --cream: #fdf6ec;
+    --cream-dark: #f4e8d4;
+    --sage: #5a7a5e;
+    --sage-light: #7ba080;
+    --text: #2a1f14;
+    --text-light: #6b5a45;
+    --correct: #2d6e3e;
+    --wrong: #9e2a2a;
+    --correct-bg: #e8f5ec;
+    --wrong-bg: #fde8e8;
+    --tile-shadow: 0 4px 20px rgba(26,39,68,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ─────────────────────────────── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.35);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header-badge {
+    background: var(--terracotta);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    flex: 1;
+  }
+
+  .header-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── NAV TABS ───────────────────────────── */
+  nav {
+    background: var(--navy-light);
+    border-bottom: 3px solid var(--gold);
+    overflow-x: auto;
+  }
+
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  nav button:hover { color: white; }
+  nav button.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold-light);
+  }
+
+  /* ── MAIN ───────────────────────────────── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  section { display: none; }
+  section.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ── WEEK OVERVIEW ──────────────────────── */
+  .week-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #2d4a7a 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .week-hero::before {
+    content: 'SEM. 5';
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .week-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .week-hero p {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+  }
+
+  .topic-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Schedule table */
+  .schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--tile-shadow);
+    margin-bottom: 32px;
+  }
+
+  .schedule-table thead {
+    background: var(--navy);
+    color: white;
+  }
+
+  .schedule-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  .schedule-table tbody tr:nth-child(even) { background: var(--cream-dark); }
+  .schedule-table tbody tr:nth-child(odd) { background: white; }
+  .schedule-table tbody tr:hover { background: #efe4d4; transition: background 0.2s; }
+
+  .schedule-table td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+
+  .day-type {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .type-inclass { background: var(--navy); color: white; }
+  .type-self { background: var(--sage); color: white; }
+  .type-practice { background: var(--terracotta); color: white; }
+
+  .day-focus { font-weight: 600; color: var(--navy); }
+  .hw-note { font-style: italic; color: var(--text-light); font-size: 0.85rem; }
+
+  /* ── SECTION TITLES ─────────────────────── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    border-left: 5px solid var(--terracotta);
+    padding-left: 16px;
+  }
+
+  .section-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-left: 21px;
+  }
+
+  /* ── VOCAB CARDS ────────────────────────── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .vocab-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--tile-shadow);
+    cursor: pointer;
+    perspective: 600px;
+    height: 110px;
+    position: relative;
+  }
+
+  .vocab-card-inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(.4,2,.6,1);
+    border-radius: 10px;
+  }
+
+  .vocab-card.flipped .vocab-card-inner { transform: rotateY(180deg); }
+
+  .vocab-front, .vocab-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .vocab-front {
+    background: white;
+    border: 2px solid var(--cream-dark);
+  }
+
+  .vocab-front .es {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .vocab-front .hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .vocab-back {
+    background: var(--navy);
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .vocab-back .en {
+    font-size: 0.95rem;
+    font-weight: 300;
+  }
+
+  .flip-tip {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── GRAMMAR BOXES ──────────────────────── */
+  .grammar-box {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .grammar-header {
+    background: var(--navy);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .grammar-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--terracotta);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .grammar-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .grammar-body { padding: 24px; }
+  .grammar-body p { margin-bottom: 14px; font-size: 0.95rem; }
+
+  .pronoun-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 0.9rem;
+  }
+
+  .pronoun-table th {
+    background: var(--cream-dark);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .pronoun-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .pronoun-table .sp { font-style: italic; color: var(--navy); font-weight: 600; }
+  .pronoun-table .en { color: var(--text-light); }
+
+  .example-block {
+    background: var(--cream);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+
+  .example-block p { margin: 4px 0; font-size: 0.9rem; }
+
+  .example-block .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px !important;
+  }
+
+  .example-block .es { font-style: italic; color: var(--navy); }
+  .example-block .en { color: var(--text-light); font-size: 0.82rem; }
+
+  /* ── EXERCISES ──────────────────────────── */
+  .exercise-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+
+  .exercise-header {
+    background: var(--terracotta);
+    color: white;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .exercise-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+  }
+
+  .exercise-header .ex-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    background: rgba(0,0,0,0.2);
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  .exercise-body { padding: 24px; }
+
+  .exercise-body .instructions {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--cream-dark);
+    padding-bottom: 14px;
+  }
+
+  .exercise-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--cream);
+    transition: background 0.2s;
+  }
+
+  .exercise-item.correct { background: var(--correct-bg); }
+  .exercise-item.wrong { background: var(--wrong-bg); }
+
+  .item-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    min-width: 22px;
+    margin-top: 2px;
+  }
+
+  .item-text { flex: 1; }
+  .item-text p { font-size: 0.92rem; margin-bottom: 8px; }
+
+  .fill-sentence {
+    font-size: 0.92rem;
+    line-height: 2.2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blank-input {
+    background: white;
+    border: none;
+    border-bottom: 2px solid var(--navy);
+    padding: 2px 8px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--navy);
+    min-width: 130px;
+    width: auto;
+    transition: border-color 0.2s;
+  }
+
+  .blank-input:focus { outline: none; border-bottom-color: var(--gold); }
+  .blank-input.correct-input { border-bottom-color: var(--correct); color: var(--correct); }
+  .blank-input.wrong-input { border-bottom-color: var(--wrong); color: var(--wrong); }
+
+  .feedback {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    margin-top: 6px;
+    display: none;
+  }
+
+  .feedback.show { display: block; }
+  .feedback.correct { color: var(--correct); }
+  .feedback.wrong { color: var(--wrong); }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-check { background: var(--navy); color: white; }
+  .btn-check:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .btn-reset { background: var(--cream-dark); color: var(--text); }
+  .btn-reset:hover { background: #e0d0b8; }
+
+  .score-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-left: auto;
+    display: none;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .score-badge.show { display: flex; }
+  .score-badge.good { background: var(--correct-bg); color: var(--correct); }
+  .score-badge.ok { background: #fff3cd; color: #856404; }
+  .score-badge.retry { background: var(--wrong-bg); color: var(--wrong); }
+
+  /* word bank */
+  .word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 14px;
+    background: var(--cream);
+    border-radius: 8px;
+    border: 1px dashed var(--cream-dark);
+  }
+
+  .word-bank-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .word-chip {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--navy);
+  }
+
+  /* ── CONJUGATION TABLE EXERCISE ─────────── */
+  .conj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .conj-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+
+  .conj-pronoun {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    min-width: 90px;
+  }
+
+  .conj-input {
+    flex: 1;
+    border: none;
+    border-bottom: 2px solid var(--navy);
+    background: transparent;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--navy);
+    padding: 2px 4px;
+  }
+
+  .conj-input:focus { outline: none; border-bottom-color: var(--gold); }
+  .conj-input.correct-input { border-bottom-color: var(--correct); color: var(--correct); }
+  .conj-input.wrong-input { border-bottom-color: var(--wrong); color: var(--wrong); }
+
+  .conj-verb-header {
+    background: var(--navy);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 8px 14px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .conj-section { margin-bottom: 24px; }
+
+  /* ── CULTURAL NOTE ──────────────────────── */
+  .cultural-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--tile-shadow);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .cultural-header {
+    background: linear-gradient(90deg, var(--sage) 0%, var(--sage-light) 100%);
+    color: white;
+    padding: 16px 24px;
+  }
+
+  .cultural-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+  }
+
+  .cultural-body {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 640px) { .cultural-body { grid-template-columns: 1fr; } }
+
+  .fact-card {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .fact-card .fact-icon { font-size: 1.5rem; margin-bottom: 8px; }
+  .fact-card h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .fact-card p { font-size: 0.88rem; }
+
+  /* ── VIDEO LOG ──────────────────────────── */
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--cream);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .checklist-item:hover { background: var(--cream-dark); }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--sage);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .checklist-item label {
+    font-size: 0.92rem;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .checklist-item.done label {
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+
+  .script-area {
+    width: 100%;
+    border: 2px solid var(--cream-dark);
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.92rem;
+    color: var(--navy);
+    resize: vertical;
+    min-height: 200px;
+    margin-top: 12px;
+    transition: border-color 0.2s;
+    background: white;
+  }
+
+  .script-area:focus { outline: none; border-color: var(--gold); }
+
+  .progress-bar-wrap {
+    background: var(--cream-dark);
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin: 6px 0 4px;
+  }
+
+  .progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--sage), var(--sage-light));
+    transition: width 0.5s ease;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────── */
+  @media (max-width: 600px) {
+    .header-inner { padding: 12px 16px; gap: 10px; }
+    main { padding: 24px 16px 60px; }
+    .week-hero { padding: 24px 20px; }
+    .week-hero h1 { font-size: 1.5rem; }
+    .grammar-body { padding: 16px; }
+    .exercise-body { padding: 16px; }
+    .conj-grid { grid-template-columns: 1fr; }
+  }
+
+  /* connector chips */
+  .connector-chip {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 2px 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* learning objectives list */
+  .obj-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .obj-item {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    box-shadow: var(--tile-shadow);
+    border-left: 4px solid var(--gold);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .obj-item::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.7rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="header-badge">SPSCC · ESP 121</span>
+    <span class="header-title">Semana 5 — Midterm Review &amp; Exam</span>
+    <span class="header-subtitle">Capítulos 1–2 · Examen el miércoles</span>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="active" onclick="showSection('overview')">📋 Overview</button>
+    <button onclick="showSection('repaso1')">📝 Repaso Cap. 1</button>
+    <button onclick="showSection('repaso2')">📝 Repaso Cap. 2</button>
+    <button onclick="showSection('vocab')">🌎 Vocabulario</button>
+    <button onclick="showSection('lectura')">📖 Lectura</button>
+    <button onclick="showSection('escritura')">✍️ Escritura</button>
+    <button onclick="showSection('examen')">🎯 Examen</button>
+
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════ OVERVIEW -->
+<section id="overview" class="active">
+  <div class="week-hero">
+    <h1>Semana 5 — Midterm Review &amp; Exam</h1>
+    <p>SPSCC · Spanish 121 · Capítulos 1–2 · Repaso completo + Examen parcial el miércoles</p>
+    <div class="topic-chips">
+      <span class="chip">repaso Cap. 1–2</span>
+      <span class="chip">ser · llamarse · regular verbs</span>
+      <span class="chip">ir · tener · hacer</span>
+      <span class="chip">concordancia</span>
+      <span class="chip">gustar · demostrativos</span>
+      <span class="chip">examen parcial</span>
+    </div>
+  </div>
+
+  <!-- Goal banner -->
+  <div style="background:linear-gradient(135deg, var(--terracotta), var(--terra-light));color:white;padding:24px 28px;border-radius:14px;margin-bottom:32px;box-shadow:var(--soft-shadow)">
+    <div style="font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.85;margin-bottom:8px">Esta Semana · This Week</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px;color:white">Prepárate para el Examen Parcial</h2>
+    <p style="font-size:0.95rem;line-height:1.5;opacity:0.95">A complete self-paced review of Chapters 1–2 followed by a Wednesday midterm. Work through the <strong>Repaso</strong> tabs first, then drill <strong>Vocabulario</strong>, practice <strong>Lectura</strong> and <strong>Escritura</strong>, and check the <strong>Examen</strong> tab for format and study tips.</p>
+  </div>
+
+  <!-- Learning Objectives -->
+  <h2 class="section-title">Objetivos del Repaso</h2>
+  <p class="section-meta">By the end of Semana 5 you will be able to:</p>
+  <div class="obj-list">
+    <div class="obj-item"><span>Conjugate <em>ser</em>, <em>llamarse</em>, and regular -ar/-er/-ir verbs in the present tense</span></div>
+    <div class="obj-item"><span>Use the correct definite article (<em>el / la / los / las</em>) with classroom vocabulary</span></div>
+    <div class="obj-item"><span>Conjugate the irregular verbs <em>ir</em>, <em>tener</em>, and <em>hacer</em> fluently</span></div>
+    <div class="obj-item"><span>Apply adjective agreement (gender + number) consistently in writing and speech</span></div>
+    <div class="obj-item"><span>Use <em>gustar</em> with correct singular/plural and indirect-object pronouns</span></div>
+    <div class="obj-item"><span>Choose between <em>este / ese / aquel</em> based on distance and noun agreement</span></div>
+    <div class="obj-item"><span>Write numbers 1–50 in Spanish words</span></div>
+    <div class="obj-item"><span>Read a short Spanish paragraph and answer comprehension questions</span></div>
+    <div class="obj-item"><span>Write a 6–8 sentence composition using all chapter structures</span></div>
+  </div>
+
+  <!-- Weekly Schedule -->
+  <h2 class="section-title">Weekly Schedule</h2>
+  <p class="section-meta">4 days · Self-paced review → Mon/Tue practice → Wed midterm</p>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Type</th>
+        <th>Focus</th>
+        <th>Activities</th>
+        <th>Homework</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Weekend</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Fin de semana</small></td>
+        <td><span class="day-type type-self">Self-Guided</span></td>
+        <td class="day-focus">Cap. 1 Self-Review</td>
+        <td>Complete Ejercicios A and B independently; review your Video Log 1 recording for grammar errors; re-study <em>ser / llamarse</em> and articles</td>
+        <td class="hw-note">Ejercicios A–B due Monday; identify your 3 weakest areas</td>
+      </tr>
+      <tr>
+        <td><strong>Monday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Lunes</small></td>
+        <td><span class="day-type type-inclass">In-Class</span></td>
+        <td class="day-focus">Cap. 2 Review + Activities</td>
+        <td>Guided review of <em>ir / tener / hacer</em>, adjective agreement, <em>gustar</em>, demonstratives; group quiz game; <em>¡Adivina quién!</em> review round</td>
+        <td class="hw-note">Complete Ejercicios C–D; study written-profile feedback</td>
+      </tr>
+      <tr>
+        <td><strong>Tuesday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Martes</small></td>
+        <td><span class="day-type type-practice">Practice</span></td>
+        <td class="day-focus">Exam Strategies + Mock Questions</td>
+        <td>Mock exam questions (written); oral practice pairs; exam-format Q&amp;A; timed writing drill</td>
+        <td class="hw-note">Final review — focus on your personal error log from Monday</td>
+      </tr>
+      <tr>
+        <td><strong>Wednesday</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">Miércoles</small></td>
+        <td><span class="day-type type-inclass">In-Class</span></td>
+        <td class="day-focus">🎯 EXAMEN PARCIAL</td>
+        <td>Written exam: vocabulary, grammar fill-in, reading comprehension, writing (45–55 min). Oral component: brief individual oral check-in.</td>
+        <td class="hw-note">Begin Cap. 3 vocabulary &amp; grammar over the weekend</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Monday class plan -->
+  <h2 class="section-title">Monday In-Class Plan</h2>
+  <p class="section-meta">Lunes · En clase · 50 minutes</p>
+
+  <div style="display:grid;gap:12px;margin-bottom:32px;">
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--terracotta)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--terracotta);min-width:70px">0:00–0:15</div>
+      <div class="item-text"><strong>Guided Review — Cap. 2 Structures:</strong> <em>ir / tener / hacer</em> conjugation; adjective agreement rules; <em>gustar</em>; demonstratives. Instructor works examples on the board; students confirm or correct.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--navy)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--navy);min-width:70px">0:15–0:30</div>
+      <div class="item-text"><strong>Group Quiz Game:</strong> Teams of 3. Instructor reads prompts (conjugate the verb, fix the agreement error, choose the correct <em>gustar</em> form). Teams write answers — fastest correct answer wins a point.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--sage)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--sage);min-width:70px">0:30–0:45</div>
+      <div class="item-text"><strong>¡Adivina quién! Review Round:</strong> Rapid-fire — 2 minutes per pair. Focus on using all Cap. 1–2 vocabulary.</div>
+    </div>
+    <div class="exercise-item" style="background:white;border-left:4px solid var(--gold)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--gold);min-width:70px">0:45–0:50</div>
+      <div class="item-text"><strong>Q&amp;A + Error Log:</strong> Students write their top 2 weak areas. Instructor collects for targeted feedback before Wednesday's exam.</div>
+    </div>
+  </div>
+
+  <!-- Wednesday: exam time block -->
+  <h2 class="section-title">Wednesday — 🎯 EXAMEN PARCIAL</h2>
+  <p class="section-meta">Miércoles · 1 hr 5 min · Available in Canvas starting 11:20am</p>
+
+  <div style="display:grid;gap:12px;margin-bottom:32px;">
+    <div class="exercise-item" style="background:linear-gradient(135deg,#fff5f0,white);border-left:4px solid var(--terracotta)">
+      <div class="item-num" style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--terracotta);min-width:70px">0:00–1:05</div>
+      <div class="item-text"><strong>Midterm Exam — 4 parts:</strong> Part 1 Vocabulary (15 min) · Part 2 Grammar (20 min) · Part 3 Reading (10 min) · Part 4 Writing (15 min, overlap with oral check-in). See the <strong>Examen</strong> tab for full format and scoring breakdown.</div>
+    </div>
+  </div>
+
+  <!-- Online Resources -->
+  <h2 class="section-title">Online Resources</h2>
+  <p class="section-meta">Semana 5 · Outside Materials</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:16px">
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Weekend–Tuesday · Self-Guided</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">Repaso Capítulos 1–2</p>
+      <a href="https://www.youtube.com/watch?v=lyy8pgKQHgY" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Ser vs. Estar Full Explanation (maestrokaplan)</a>
+      <a href="https://www.youtube.com/watch?v=beEfdjFz3AI" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Regular Verb Review — AR/ER/IR (maestrokaplan)</a>
+      <span style="display:block;font-size:0.8rem;color:var(--text-light);margin-top:4px">📝 Practice: Class website</span>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow);border:2px solid var(--terracotta)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">🎯 Wednesday · Examen</div>
+      <p style="font-size:0.88rem;font-weight:600;margin-bottom:8px">Last-Minute Spanish 1 Review</p>
+      <a href="https://www.youtube.com/@spanishpod101/search?query=Spanish+1+review+beginner" target="_blank" style="display:block;font-size:0.8rem;color:var(--navy);text-decoration:none;margin-bottom:4px">▶ Video: Spanish 1 Review Playlist (SpanishPod101)</a>
+      <span style="display:block;font-size:0.8rem;color:var(--text-light);margin-top:4px">📝 Practice: Class website</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ REPASO CAP. 1 -->
+<section id="repaso1">
+  <h2 class="section-title">Repaso Capítulo 1 — Chapter 1 Review</h2>
+  <p class="section-meta">ser · llamarse · regular verbs · articles · classroom vocabulary</p>
+
+  <!-- EJERCICIO A — ser, llamarse, regular verbs -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio A — Repaso de Verbos Cap. 1</h3>
+      <span class="ex-num">EJ. A</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Fill in with the correct form of <em>ser</em>, <em>llamarse</em>, or the regular verb in parentheses. / Completa con el verbo indicado.</p>
+      <div id="ejA"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjA()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjA()">Reset</button>
+        <span class="score-badge" id="scoreA"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO B — Articles + classroom vocab -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio B — Artículos y Vocabulario de Clase</h3>
+      <span class="ex-num">EJ. B</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Type the correct definite article (<em>el / la / los / las</em>) AND the English translation. / Escribe el artículo correcto Y la traducción.</p>
+      <div class="word-bank">
+        <span class="word-bank-label">Article reference</span>
+        <span class="word-chip">el</span>
+        <span class="word-chip">la</span>
+        <span class="word-chip">los</span>
+        <span class="word-chip">las</span>
+      </div>
+      <div id="ejB"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjB()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjB()">Reset</button>
+        <span class="score-badge" id="scoreB"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ REPASO CAP. 2 -->
+<section id="repaso2">
+  <h2 class="section-title">Repaso Capítulo 2 — Chapter 2 Review</h2>
+  <p class="section-meta">ir / tener / hacer · adjective agreement · gustar · numbers · demonstratives</p>
+
+  <!-- EJERCICIO C — ir/tener/hacer + agreement corrections -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio C — ir, tener, hacer + Concordancia</h3>
+      <span class="ex-num">EJ. C</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Some items ask for a verb form. Others say <em>"CORRECTION"</em> — for those, write the corrected phrase with proper adjective agreement. / Algunos piden un verbo, otros piden la corrección de concordancia.</p>
+      <div id="ejC"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjC()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjC()">Reset</button>
+        <span class="score-badge" id="scoreC"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO D — Mixed: gustar + numbers + demonstratives -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio D — Mixto: gustar + números + demostrativos</h3>
+      <span class="ex-num">EJ. D</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Mixed Chapter 2 review. Hint chips show what each item is testing. / Repaso mixto del Capítulo 2.</p>
+      <div id="ejD"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjD()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjD()">Reset</button>
+        <span class="score-badge" id="scoreD"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ VOCABULARIO -->
+<section id="vocab">
+  <h2 class="section-title">Repaso de Vocabulario</h2>
+  <p class="section-meta">Matching, categorization, and contextual fill-in</p>
+
+  <!-- EJERCICIO E — Matching (12 items) -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio E — Relaciona / Match</h3>
+      <span class="ex-num">EJ. E</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Type the correct letter (a–l) next to each Spanish word. Pay attention to gender (m./f.) on the nationalities. / Escribe la letra correcta. Atención al género.</p>
+
+      <div style="background:var(--cream);border-radius:10px;padding:14px 18px;margin-bottom:14px">
+        <p style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--terracotta);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">English bank</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px;font-size:0.85rem">
+          <div><strong>a)</strong> lazy</div>
+          <div><strong>b)</strong> (m.) Argentine</div>
+          <div><strong>c)</strong> singer</div>
+          <div><strong>d)</strong> influential</div>
+          <div><strong>e)</strong> American (U.S.)</div>
+          <div><strong>f)</strong> (f.) Peruvian</div>
+          <div><strong>g)</strong> filmmaker</div>
+          <div><strong>h)</strong> shy</div>
+          <div><strong>i)</strong> athlete</div>
+          <div><strong>j)</strong> scientist</div>
+          <div><strong>k)</strong> (m.) Puerto Rican</div>
+          <div><strong>l)</strong> outgoing</div>
+        </div>
+      </div>
+
+      <div id="ejE"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjE()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjE()">Reset</button>
+        <span class="score-badge" id="scoreE"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO F — Categorization -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio F — Categoriza las Palabras</h3>
+      <span class="ex-num">EJ. F</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions"><strong>Click each word</strong> to send it to a category. Each click cycles: bank → 👤 Profesiones → 🌎 Nacionalidades → ✨ Adjetivos → bank. / Haz clic para mover cada palabra a su categoría.</p>
+
+      <div id="ejF" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:18px 0;padding:18px;background:var(--cream);border-radius:10px;min-height:80px"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:16px">
+        <div style="background:white;border:2px dashed var(--navy);border-radius:10px;padding:14px;min-height:140px">
+          <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--navy);font-weight:700;letter-spacing:0.06em;margin-bottom:10px">👤 PROFESIONES</div>
+          <div id="ejF_profesiones" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+        </div>
+        <div style="background:white;border:2px dashed var(--terracotta);border-radius:10px;padding:14px;min-height:140px">
+          <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--terracotta);font-weight:700;letter-spacing:0.06em;margin-bottom:10px">🌎 NACIONALIDADES</div>
+          <div id="ejF_nacionalidades" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+        </div>
+        <div style="background:white;border:2px dashed var(--gold);border-radius:10px;padding:14px;min-height:140px">
+          <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;margin-bottom:10px">✨ ADJETIVOS</div>
+          <div id="ejF_adjetivos" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjF()">Check Categorization</button>
+        <button class="btn btn-reset" onclick="resetEjF()">Reset</button>
+        <span class="score-badge" id="scoreF"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO G — Vocab in context -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio G — Vocabulario en Contexto</h3>
+      <span class="ex-num">EJ. G</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Fill in each sentence with the correct word from the bank. Watch the gender agreement! / Completa con la palabra del banco — ¡cuidado con la concordancia!</p>
+      <div class="word-bank">
+        <span class="word-bank-label">Word bank</span>
+        <span class="word-chip">argentino</span>
+        <span class="word-chip">artista</span>
+        <span class="word-chip">colombiana</span>
+        <span class="word-chip">creativa</span>
+        <span class="word-chip">estadounidense</span>
+        <span class="word-chip">generoso</span>
+        <span class="word-chip">tímido/a</span>
+        <span class="word-chip">trabajador/a</span>
+      </div>
+      <div id="ejG"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjG()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjG()">Reset</button>
+        <span class="score-badge" id="scoreG"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO H — Classroom expressions -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio H — Expresiones de Clase</h3>
+      <span class="ex-num">EJ. H</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">What do you say in each situation? Type the correct expression in Spanish. Multiple natural answers may be accepted. / ¿Qué dices en cada situación?</p>
+      <div id="ejH"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjH()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjH()">Reset</button>
+        <span class="score-badge" id="scoreH"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LECTURA -->
+<section id="lectura">
+  <h2 class="section-title">Repaso de Lectura — Carmen y Lucía</h2>
+  <p class="section-meta">Read the paragraph, then answer the comprehension &amp; True/False questions</p>
+
+  <!-- The reading passage -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon" style="background:var(--sage)">📖</div>
+      <div>
+        <h3>Lectura · Reading Passage</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">Read carefully — you'll need it for both Part A and Part B</p>
+      </div>
+    </div>
+    <div class="grammar-body" style="font-size:0.95rem;line-height:1.7">
+      <p>Me llamo Carmen y soy puertorriqueña, pero ahora vivo en Texas. Tengo diecinueve años y estudio en la universidad. Mi compañera de cuarto se llama Lucía. Ella es colombiana y es muy simpática, inteligente y trabajadora. Hablamos español todos los días y practicamos mucho para los exámenes.</p>
+      <p>Mi profesora favorita se llama la Dra. Ramírez. Ella es mexicana, divertida y muy carismática. En su clase escuchamos música en español, leemos cuentos cortos y escribimos composiciones. Aprendemos rápido porque ella es una profesora excelente.</p>
+      <p>Después de las clases, Lucía y yo escuchamos música. A mí me gusta Shakira porque es una cantante colombiana muy talentosa. A Lucía le gustan más los músicos cubanos y argentinos. Los viernes vamos al cine: mi actor favorito es estadounidense y tiene una nueva película. <strong>¡Esta universidad es fantástica!</strong></p>
+    </div>
+  </div>
+
+  <!-- EJERCICIO I Part A — Comprehension -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio I — Parte A: Preguntas de Comprensión</h3>
+      <span class="ex-num">EJ. I-A</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Answer in Spanish. Don't worry about full sentences — keywords matter most. / Responde en español; lo importante son las palabras clave.</p>
+      <div id="ejI_A"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjIA()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjIA()">Reset</button>
+        <span class="score-badge" id="scoreIA"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO I Part B — True/False -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Ejercicio I — Parte B: Verdadero o Falso</h3>
+      <span class="ex-num">EJ. I-B</span>
+    </div>
+    <div class="exercise-body">
+      <p class="instructions">Type <strong>V</strong> for <em>verdadero</em> (true) or <strong>F</strong> for <em>falso</em> (false). / Escribe V o F.</p>
+      <div id="ejI_B"></div>
+      <div class="btn-row">
+        <button class="btn btn-check" onclick="checkEjIB()">Check Answers</button>
+        <button class="btn btn-reset" onclick="resetEjIB()">Reset</button>
+        <span class="score-badge" id="scoreIB"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ ESCRITURA -->
+<section id="escritura">
+  <h2 class="section-title">Repaso de Escritura</h2>
+  <p class="section-meta">Useful phrases, composition prompts, and a self-evaluation checklist</p>
+
+  <!-- Frases útiles reference -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon">J</div>
+      <div>
+        <h3>Ejercicio J — Frases Útiles · Useful Phrases</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">Reference structures · use these to organize your composition</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <table class="pronoun-table">
+        <thead>
+          <tr><th>Función</th><th>Estructuras</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="connector-chip">Para empezar</span></td>
+            <td class="sp">Me llamo… · Soy de… · Soy [nacionalidad] · Tengo ___ años</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">Para describir</span></td>
+            <td class="sp">Es / Son + adjetivo · Tiene / Tienen + sustantivo</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">Profesiones</span></td>
+            <td class="sp">Es un/una + profesión (cantante, deportista, cineasta, científico/a…)</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">Para conectar</span></td>
+            <td class="sp">y · pero · también · porque · además</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">Para gustos</span></td>
+            <td class="sp">Me gusta(n)… · No me gusta(n)… · A mí me gusta…</td>
+          </tr>
+          <tr>
+            <td><span class="connector-chip">Actividades</span></td>
+            <td class="sp">Voy a… · Hago… · Tengo clase de… · hablamos, leemos, escribimos…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- EJERCICIO K — Composition with topic chooser -->
+  <h2 class="section-title">Ejercicio K — Composición · 6–8 Oraciones</h2>
+  <p class="section-meta">Choose ONE topic · same format as the Wednesday exam · auto-saved in your browser</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:18px">
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow);border-left:4px solid var(--gold)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Opción 1</div>
+      <p style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Preséntate</p>
+      <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5;margin-bottom:8px">Write a self-introduction (6–8 sentences). Include: name, nationality, age, where you study, two activities you do in Spanish class, one thing you like, one thing you don't.</p>
+      <p style="font-size:0.72rem;color:var(--terracotta);font-weight:600">Required: <em>ser, llamarse, nacionalidad, gustar, -ar/-er/-ir verbs</em></p>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow);border-left:4px solid var(--navy)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--navy);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Opción 2</div>
+      <p style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Un personaje famoso</p>
+      <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5;margin-bottom:8px">Describe a famous person (singer, actor/actress, writer, athlete, scientist, artist, politician, etc.). Include: name, nationality, profession, THREE adjectives, and one thing they like or don't like.</p>
+      <p style="font-size:0.72rem;color:var(--terracotta);font-weight:600">Required: <em>ser + nacionalidad + profesión + 3 agreed adjectives + gustar</em></p>
+    </div>
+    <div style="background:white;border-radius:10px;padding:18px;box-shadow:var(--tile-shadow);border-left:4px solid var(--sage)">
+      <div style="font-family:'Space Mono',monospace;font-size:0.65rem;color:var(--sage);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Opción 3</div>
+      <p style="font-size:0.9rem;font-weight:700;margin-bottom:8px;color:var(--navy)">Mi semana típica</p>
+      <p style="font-size:0.82rem;color:var(--text-light);line-height:1.5;margin-bottom:8px">Describe your typical week (6–8 sentences). Include: classes you have, places you go during the week, activities you do, and what you like to do in your free time.</p>
+      <p style="font-size:0.72rem;color:var(--terracotta);font-weight:600">Required: <em>ir, tener, hacer, días de la semana, gustar</em></p>
+    </div>
+  </div>
+
+  <textarea id="composicion" class="script-area" style="min-height:240px" placeholder="Empieza tu composición aquí · Start your composition here…&#10;&#10;Choose a topic above and write 6–8 sentences."></textarea>
+  <div id="composicionStats" style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-light);margin-top:8px;display:flex;gap:18px;flex-wrap:wrap">
+    <span>📝 <span id="composWords">0</span> palabras</span>
+    <span>· <span id="composSentences">0</span> oraciones</span>
+    <span>· <span id="composChars">0</span> caracteres</span>
+    <span id="composTarget" style="color:var(--gold);font-weight:700"></span>
+  </div>
+
+  <div class="btn-row" style="margin-top:14px">
+    <button class="btn btn-check" onclick="copyComposicion()">📋 Copiar texto</button>
+    <button class="btn btn-reset" onclick="clearComposicion()">Borrar todo</button>
+    <span class="score-badge" id="composMsg"></span>
+  </div>
+  <p style="font-size:0.78rem;color:var(--text-light);margin-top:14px;font-style:italic;line-height:1.5">
+    💡 Tu composición se guarda automáticamente en este navegador. <strong>"Borrar todo"</strong> elimina la copia guardada — confirma antes de hacer clic.
+  </p>
+
+  <!-- EJERCICIO L — Self-evaluation checklist -->
+  <h2 class="section-title">Ejercicio L — Auto-Evaluación</h2>
+  <p class="section-meta">Tick each box before submitting your composition</p>
+
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon" style="background:var(--gold);color:var(--navy)">L</div>
+      <div>
+        <h3>Antes de Entregar · Before Submitting</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">Self-check · 7 items</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <div style="display:grid;gap:10px">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Subject-verb agreement?</strong> <em>(yo soy, tú eres, él es, nosotros somos…)</em></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Adjective agreement?</strong> <em>(un actor talentoso · una actriz talentosa)</em></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Nationality agreement?</strong> <em>(mexicano / mexicana, colombiano / colombiana)</em></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Correct articles?</strong> <em>(el / la / los / las)</em></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Used varied connectors?</strong> <em>(y, pero, porque, también)</em></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Between 6 and 8 complete sentences?</strong></span>
+        </label>
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:0.92rem">
+          <input type="checkbox" style="margin-top:4px;accent-color:var(--sage);width:16px;height:16px;flex-shrink:0">
+          <span><strong>Reviewed accents and punctuation?</strong> <em>(¿? ¡! á é í ó ú ñ)</em></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ EXAMEN -->
+<section id="examen">
+  <h2 class="section-title">Examen Parcial — Format &amp; Strategy</h2>
+  <p class="section-meta">Wednesday in class · 1 hr 5 min · 100 points total</p>
+
+  <!-- Exam format table -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <h3>Formato del Examen · Exam Format</h3>
+      <span class="ex-num">100 PTS</span>
+    </div>
+    <div class="exercise-body">
+      <table class="pronoun-table">
+        <thead>
+          <tr>
+            <th style="width:32%">Section</th>
+            <th>Content</th>
+            <th style="width:14%;text-align:center">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sp"><strong>Part 1: Vocabulary</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">15 minutes</small></td>
+            <td class="en">Matching + fill-in from Chapters 1–2</td>
+            <td class="sp" style="text-align:center;font-weight:700;font-size:1.05rem">25</td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>Part 2: Grammar</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">20 minutes</small></td>
+            <td class="en">Verb conjugation tables + sentence completion</td>
+            <td class="sp" style="text-align:center;font-weight:700;font-size:1.05rem">30</td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>Part 3: Reading</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">10 minutes</small></td>
+            <td class="en">Short Spanish paragraph — comprehension questions</td>
+            <td class="sp" style="text-align:center;font-weight:700;font-size:1.05rem">20</td>
+          </tr>
+          <tr>
+            <td class="sp"><strong>Part 4: Writing</strong><br><small style="color:var(--text-light);font-family:'Space Mono',monospace;font-size:0.65rem">15 minutes</small></td>
+            <td class="en">Write 6–8 sentences on a topic from the first 4 weeks</td>
+            <td class="sp" style="text-align:center;font-weight:700;font-size:1.05rem">25</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.85rem;color:var(--text-light);margin-top:14px;font-style:italic">📍 Exam available in Canvas starting <strong>11:20am Wednesday</strong>. You have <strong>1 hour and 5 minutes</strong> to complete it.</p>
+    </div>
+  </div>
+
+  <!-- Study strategy -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon" style="background:var(--terracotta)">🎯</div>
+      <div>
+        <h3>Estrategia de Estudio · Study Strategy</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">A 4-day plan mapping each tab to each exam section</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <table class="pronoun-table">
+        <thead>
+          <tr><th>If you struggle with…</th><th>Practice on this tab</th><th>Maps to exam Part…</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="en">ser, regular verbs, articles</td>
+            <td class="sp"><strong>Repaso Cap. 1</strong> (Ej A, B)</td>
+            <td class="en">Part 2 (Grammar)</td>
+          </tr>
+          <tr>
+            <td class="en">ir/tener/hacer, agreement, gustar, demonstratives</td>
+            <td class="sp"><strong>Repaso Cap. 2</strong> (Ej C, D)</td>
+            <td class="en">Part 2 (Grammar)</td>
+          </tr>
+          <tr>
+            <td class="en">Vocabulary recall, gender of professions, classroom phrases</td>
+            <td class="sp"><strong>Vocabulario</strong> (Ej E, F, G, H)</td>
+            <td class="en">Part 1 (Vocabulary)</td>
+          </tr>
+          <tr>
+            <td class="en">Reading comprehension speed</td>
+            <td class="sp"><strong>Lectura</strong> (Ej I)</td>
+            <td class="en">Part 3 (Reading)</td>
+          </tr>
+          <tr>
+            <td class="en">Writing organization, sentence flow</td>
+            <td class="sp"><strong>Escritura</strong> (Ej J, K, L)</td>
+            <td class="en">Part 4 (Writing)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example-block" style="margin-top:18px">
+        <p class="label">💡 Top Tips · Consejos del día</p>
+        <p class="es"><strong>1.</strong> Manage time — don't spend more than the listed minutes on each section. Move on and come back.</p>
+        <p class="es"><strong>2.</strong> Read every prompt twice. Many errors come from misreading "él" as "tú" or missing a plural marker.</p>
+        <p class="es"><strong>3.</strong> Use the 7-item checklist in <strong>Ejercicio L</strong> on your writing answer before submitting.</p>
+        <p class="es"><strong>4.</strong> If you don't know a word in writing, paraphrase. Don't leave the question blank.</p>
+        <p class="es"><strong>5.</strong> Accents matter — <em>tú</em> (you) ≠ <em>tu</em> (your), <em>sí</em> (yes) ≠ <em>si</em> (if).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- High-frequency errors -->
+  <div class="grammar-box">
+    <div class="grammar-header">
+      <div class="grammar-icon" style="background:var(--wrong)">⚠</div>
+      <div>
+        <h3>Errores Comunes · Common Errors to Avoid</h3>
+        <p style="font-size:0.75rem;opacity:0.7;margin-top:2px;font-family:'Space Mono',monospace">The mistakes graders see most often</p>
+      </div>
+    </div>
+    <div class="grammar-body">
+      <table class="pronoun-table">
+        <thead>
+          <tr><th>❌ Common error</th><th>✓ Correct</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sp">una actriz talentoso</td>
+            <td class="sp">una actriz talentosa</td>
+            <td class="en">adjective must agree with feminine noun</td>
+          </tr>
+          <tr>
+            <td class="sp">me gusta los libros</td>
+            <td class="sp">me gustan los libros</td>
+            <td class="en">"libros" is plural → use <em>gustan</em></td>
+          </tr>
+          <tr>
+            <td class="sp">yo voy <em>(present)</em>…ayer</td>
+            <td class="sp">match tense to time marker</td>
+            <td class="en">don't mix present with past time markers</td>
+          </tr>
+          <tr>
+            <td class="sp">yo soy 19 años</td>
+            <td class="sp">yo tengo 19 años</td>
+            <td class="en">use <em>tener</em> for age, not <em>ser</em></td>
+          </tr>
+          <tr>
+            <td class="sp">¿Que es tu nombre?</td>
+            <td class="sp">¿Cuál es tu nombre?</td>
+            <td class="en"><em>cuál</em> for selection, <em>qué</em> for definition</td>
+          </tr>
+          <tr>
+            <td class="sp">la problema</td>
+            <td class="sp">el problema</td>
+            <td class="en">words ending in <em>-ma</em> from Greek are usually masculine</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// ── NAVIGATION ─────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── UTILITY ────────────────────────────────────────
+function normalize(s) {
+  return (s || '').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function showScore(id, correct, total) {
+  const el = document.getElementById(id);
+  el.textContent = `${correct} / ${total}`;
+  const pct = correct / total;
+  el.className = 'score-badge show ' + (pct >= 0.85 ? 'good' : pct >= 0.6 ? 'ok' : 'retry');
+}
+
+// ── GENERIC FILL-IN-WITH-HINT BUILDER ──────────────
+// Used for most exercises that follow [before] [hint] [INPUT] [after] structure.
+// `key` is the exercise key (e.g., 'A', 'B', 'IA') for prefixing IDs.
+function buildFillExercise(data, key, containerId) {
+  const container = document.getElementById(containerId);
+  data.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    const hintChip = item.verb
+      ? `<span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-light);background:var(--cream-dark);padding:2px 6px;border-radius:3px">${item.verb}</span>`
+      : '';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div class="fill-sentence">
+          ${item.before ? `<span>${item.before}</span>` : ''}
+          ${hintChip}
+          <input class="blank-input" id="e${key}_${i}" type="text" placeholder="___" autocomplete="off" spellcheck="false">
+          ${item.after ? `<span>${item.after}</span>` : ''}
+        </div>
+        <div class="feedback" id="fb${key}_${i}"></div>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function checkFillExercise(data, key, scoreId) {
+  let correct = 0;
+  data.forEach((item, i) => {
+    const inp = document.getElementById(`e${key}_${i}`);
+    const fb = document.getElementById(`fb${key}_${i}`);
+    const ok = item.accepted.some(a => normalize(a) === normalize(inp.value));
+    inp.className = 'blank-input ' + (ok ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll(`#ej${key} .exercise-item`)[i].className = 'exercise-item ' + (ok ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? '✓ ¡Correcto!' : `✗ Answer: ${item.accepted[0]}`;
+    if (ok) correct++;
+  });
+  showScore(scoreId, correct, data.length);
+}
+
+function resetFillExercise(data, key, scoreId) {
+  data.forEach((_, i) => {
+    const inp = document.getElementById(`e${key}_${i}`);
+    inp.value = ''; inp.className = 'blank-input';
+    document.getElementById(`fb${key}_${i}`).className = 'feedback';
+    document.querySelectorAll(`#ej${key} .exercise-item`)[i].className = 'exercise-item';
+  });
+  document.getElementById(scoreId).className = 'score-badge';
+}
+
+// ── EJERCICIO A — Cap. 1 verbs ─────────────────────
+const ejAData = [
+  { before: 'Yo',          verb: '(ser)',         after: 'estudiante de segundo año.',                accepted: ['soy'] },
+  { before: '¿Cómo',        verb: '(llamarse, tú)', after: 'tú? — Me llamo Ana López.',                  accepted: ['te llamas'] },
+  { before: 'Nosotros',     verb: '(comer)',        after: 'en la cafetería cada día.',                  accepted: ['comemos'] },
+  { before: 'Ellos',        verb: '(vivir)',        after: 'en un apartamento cerca del campus.',        accepted: ['viven'] },
+  { before: '¿Tú',          verb: '(estudiar)',     after: 'español todos los días?',                    accepted: ['estudias'] },
+  { before: 'La profesora', verb: '(leer)',         after: 'los correos electrónicos de los estudiantes.', accepted: ['lee'] },
+  { before: 'Yo',          verb: '(ser)',          after: 'de Puerto Rico, pero ahora vivo en Texas.',  accepted: ['soy'] },
+  { before: '¿Cómo',        verb: '(llamarse, él)', after: 'el nuevo estudiante? — Se llama Roberto.',   accepted: ['se llama'] },
+];
+buildFillExercise(ejAData, 'A', 'ejA');
+function checkEjA() { checkFillExercise(ejAData, 'A', 'scoreA'); }
+function resetEjA() { resetFillExercise(ejAData, 'A', 'scoreA'); }
+
+// ── EJERCICIO B — Articles + classroom vocab ───────
+// Two-blank items: [article] + [translation]. Build a custom widget.
+const ejBData = [
+  { word: 'examen',                article: 'el',  translations: ['the exam', 'exam'] },
+  { word: 'tareas',                article: 'las', translations: ['the homeworks', 'the assignments', 'homework', 'the homework', 'assignments'] },
+  { word: 'compañero de clase',    article: 'el',  translations: ['the classmate', 'classmate'] },
+  { word: 'pregunta',              article: 'la',  translations: ['the question', 'question'] },
+  { word: 'diccionario',           article: 'el',  translations: ['the dictionary', 'dictionary'] },
+  { word: 'idiomas',               article: 'los', translations: ['the languages', 'languages'] },
+];
+
+function buildEjB() {
+  const c = document.getElementById('ejB');
+  ejBData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div class="fill-sentence" style="flex-wrap:wrap;gap:6px">
+          <input class="blank-input" id="eB_art_${i}" type="text" placeholder="art." style="width:64px" autocomplete="off" spellcheck="false">
+          <span style="font-style:italic;font-weight:600">${item.word}</span>
+          <span style="margin:0 6px;color:var(--text-light)">→</span>
+          <input class="blank-input" id="eB_trans_${i}" type="text" placeholder="English translation…" style="flex:1;min-width:160px" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="feedback" id="fbB_${i}"></div>
+      </div>`;
+    c.appendChild(div);
+  });
+}
+buildEjB();
+
+function checkEjB() {
+  let correct = 0;
+  ejBData.forEach((item, i) => {
+    const artInp = document.getElementById(`eB_art_${i}`);
+    const transInp = document.getElementById(`eB_trans_${i}`);
+    const fb = document.getElementById(`fbB_${i}`);
+    const artOk = normalize(artInp.value) === normalize(item.article);
+    const transOk = item.translations.some(t => normalize(t) === normalize(transInp.value));
+    const bothOk = artOk && transOk;
+    artInp.className = 'blank-input ' + (artOk ? 'correct-input' : 'wrong-input');
+    transInp.className = 'blank-input ' + (transOk ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll('#ejB .exercise-item')[i].className = 'exercise-item ' + (bothOk ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (bothOk ? 'correct' : 'wrong');
+    fb.textContent = bothOk ? '✓ ¡Correcto!' : `✗ Answer: ${item.article} ${item.word} → ${item.translations[0]}`;
+    if (bothOk) correct++;
+  });
+  showScore('scoreB', correct, ejBData.length);
+}
+
+function resetEjB() {
+  ejBData.forEach((_, i) => {
+    ['art', 'trans'].forEach(suf => {
+      const inp = document.getElementById(`eB_${suf}_${i}`);
+      inp.value = ''; inp.className = 'blank-input';
+    });
+    document.getElementById(`fbB_${i}`).className = 'feedback';
+    document.querySelectorAll('#ejB .exercise-item')[i].className = 'exercise-item';
+  });
+  document.getElementById('scoreB').className = 'score-badge';
+}
+
+// ── EJERCICIO C — verbs + agreement corrections ────
+const ejCData = [
+  { before: 'Shakira',       verb: '(hacer)',     after: 'muchos conciertos en todo el mundo.',          accepted: ['hace'] },
+  { before: '¿A dónde',       verb: '(ir, tú)',    after: 'después de la clase de español?',              accepted: ['vas'] },
+  { before: 'Nosotros',       verb: '(hacer)',     after: 'ejercicio en el gimnasio los lunes.',          accepted: ['hacemos'] },
+  { before: 'CORRECTION:',    verb: 'la actriz es muy talentoso →', after: '', accepted: ['la actriz es muy talentosa'] },
+  { before: 'CORRECTION:',    verb: 'los cantantes son famoso →',   after: '', accepted: ['los cantantes son famosos'] },
+  { before: '¿',              verb: '(tener, Uds.)', after: 'clases los viernes?',                         accepted: ['tienen'] },
+  { before: 'Ella',           verb: '(ir)',        after: 'a la biblioteca porque tiene mucha tarea.',    accepted: ['va'] },
+  { before: 'CORRECTION:',    verb: 'un escritora creativo →',      after: '', accepted: ['una escritora creativa'] },
+];
+buildFillExercise(ejCData, 'C', 'ejC');
+function checkEjC() { checkFillExercise(ejCData, 'C', 'scoreC'); }
+function resetEjC() { resetFillExercise(ejCData, 'C', 'scoreC'); }
+
+// ── EJERCICIO D — Mixed: gustar + numbers + demonstratives ────
+const ejDData = [
+  { before: 'A mí',           verb: 'gustar?',                       after: 'las películas de terror.',                   accepted: ['me gustan'] },
+  { before: '¿',               verb: 'gustar (tú)?',                  after: '(a ti) el fútbol?',                          accepted: ['te gusta'] },
+  { before: '19 in words →',   verb: '#',                             after: '',                                            accepted: ['diecinueve'] },
+  { before: '"that actress over there" →', verb: 'demonstrative',     after: 'actriz',                                      accepted: ['aquella'] },
+  { before: '"these books" →', verb: 'demonstrative',                  after: 'libros',                                      accepted: ['estos'] },
+  { before: 'A ella',          verb: 'gustar?',                        after: 'el jazz, pero no le gusta el heavy metal.',  accepted: ['le gusta'] },
+  { before: '27 in words →',   verb: '#',                              after: '',                                            accepted: ['veintisiete'] },
+  { before: '"that singer (near listener)" →', verb: 'demonstrative',  after: 'cantante',                                    accepted: ['ese', 'esa'] },
+];
+buildFillExercise(ejDData, 'D', 'ejD');
+function checkEjD() { checkFillExercise(ejDData, 'D', 'scoreD'); }
+function resetEjD() { resetFillExercise(ejDData, 'D', 'scoreD'); }
+
+// ── EJERCICIO E — Letter matching (12 items) ────────
+// Spanish term → letter (a-l). Build with Spanish term shown, single
+// letter input. Single-letter answers means strict equality.
+const ejEData = [
+  { es: 'el/la cantante',     letter: 'c', en: 'singer' },
+  { es: 'el/la cineasta',     letter: 'g', en: 'filmmaker' },
+  { es: 'el/la deportista',   letter: 'i', en: 'athlete' },
+  { es: 'el/la científico/a', letter: 'j', en: 'scientist' },
+  { es: 'argentino',          letter: 'b', en: '(m.) Argentine' },
+  { es: 'peruana',            letter: 'f', en: '(f.) Peruvian' },
+  { es: 'estadounidense',     letter: 'e', en: 'American (U.S.)' },
+  { es: 'puertorriqueño',     letter: 'k', en: '(m.) Puerto Rican' },
+  { es: 'perezoso',           letter: 'a', en: 'lazy' },
+  { es: 'extrovertida',       letter: 'l', en: 'outgoing' },
+  { es: 'influyente',         letter: 'd', en: 'influential' },
+  { es: 'tímido',             letter: 'h', en: 'shy' },
+];
+
+function buildEjE() {
+  const c = document.getElementById('ejE');
+  ejEData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div class="fill-sentence">
+          <span style="font-style:italic;font-weight:600;min-width:200px">${item.es}</span>
+          <span style="color:var(--text-light)">→</span>
+          <input class="blank-input" id="eE_${i}" type="text" placeholder="letter" maxlength="1" style="width:60px;text-align:center;text-transform:lowercase" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="feedback" id="fbE_${i}"></div>
+      </div>`;
+    c.appendChild(div);
+  });
+}
+buildEjE();
+
+function checkEjE() {
+  let correct = 0;
+  ejEData.forEach((item, i) => {
+    const inp = document.getElementById(`eE_${i}`);
+    const fb = document.getElementById(`fbE_${i}`);
+    const ok = normalize(inp.value) === item.letter;
+    inp.className = 'blank-input ' + (ok ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll('#ejE .exercise-item')[i].className = 'exercise-item ' + (ok ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? `✓ ¡Correcto! (${item.en})` : `✗ Answer: ${item.letter} (${item.en})`;
+    if (ok) correct++;
+  });
+  showScore('scoreE', correct, ejEData.length);
+}
+
+function resetEjE() {
+  ejEData.forEach((_, i) => {
+    const inp = document.getElementById(`eE_${i}`);
+    inp.value = ''; inp.className = 'blank-input';
+    document.getElementById(`fbE_${i}`).className = 'feedback';
+    document.querySelectorAll('#ejE .exercise-item')[i].className = 'exercise-item';
+  });
+  document.getElementById('scoreE').className = 'score-badge';
+}
+
+// ── EJERCICIO F — Click-to-categorize ──────────────
+// Words start in the "bank" container and cycle through the 3 category
+// containers on each click. Bucket order: 0=bank, 1=profesiones, 2=nacionalidades, 3=adjetivos.
+const ejFData = [
+  { word: 'el actor',         correct: 'profesiones' },
+  { word: 'colombiana',       correct: 'nacionalidades' },
+  { word: 'ambiciosa',        correct: 'adjetivos' },
+  { word: 'cubano',           correct: 'nacionalidades' },
+  { word: 'la escritora',     correct: 'profesiones' },
+  { word: 'perezoso',         correct: 'adjetivos' },
+  { word: 'el músico',        correct: 'profesiones' },
+  { word: 'venezolana',       correct: 'nacionalidades' },
+  { word: 'creativa',         correct: 'adjetivos' },
+  { word: 'el político',      correct: 'profesiones' },
+  { word: 'estadounidense',   correct: 'nacionalidades' },
+  { word: 'el cineasta',      correct: 'profesiones' },
+  { word: 'talentoso',        correct: 'adjetivos' },
+  { word: 'simpática',        correct: 'nacionalidades', _trick: true /* this looks like adjetivo to many — actually adjetivo */ },
+  { word: 'argentino',        correct: 'nacionalidades' },
+];
+// Correction: simpática IS an adjective, not nationality. Fix:
+ejFData[13].correct = 'adjetivos';
+delete ejFData[13]._trick;
+
+const ejFBuckets = ['bank', 'profesiones', 'nacionalidades', 'adjetivos'];
+const ejFState = {}; // word → bucket name
+
+function ejFColor(bucket) {
+  return { profesiones: 'var(--navy)', nacionalidades: 'var(--terracotta)', adjetivos: 'var(--gold)', bank: 'var(--cream-dark)' }[bucket];
+}
+function ejFTextColor(bucket) {
+  return bucket === 'adjetivos' ? 'var(--navy)' : (bucket === 'bank' ? 'var(--navy)' : 'white');
+}
+
+function ejFRender() {
+  // Clear every container
+  ejFBuckets.forEach(b => {
+    const id = b === 'bank' ? 'ejF' : `ejF_${b}`;
+    const el = document.getElementById(id);
+    el.innerHTML = '';
+  });
+  // Place each word
+  ejFData.forEach((item, i) => {
+    const bucket = ejFState[item.word] || 'bank';
+    const containerId = bucket === 'bank' ? 'ejF' : `ejF_${bucket}`;
+    const chip = document.createElement('span');
+    chip.style.cssText = `display:inline-block;padding:6px 12px;border-radius:6px;font-size:0.85rem;cursor:pointer;user-select:none;transition:all 0.15s;background:${ejFColor(bucket)};color:${ejFTextColor(bucket)};border:1px solid ${ejFColor(bucket)};font-family:'Source Serif 4',serif`;
+    chip.textContent = item.word;
+    chip.dataset.word = item.word;
+    chip.addEventListener('click', () => {
+      const cur = ejFState[item.word] || 'bank';
+      const idx = ejFBuckets.indexOf(cur);
+      ejFState[item.word] = ejFBuckets[(idx + 1) % ejFBuckets.length];
+      ejFRender();
+    });
+    document.getElementById(containerId).appendChild(chip);
+  });
+}
+ejFRender();
+
+function checkEjF() {
+  let correct = 0;
+  let placed = 0;
+  ejFData.forEach(item => {
+    const bucket = ejFState[item.word] || 'bank';
+    if (bucket === 'bank') return;
+    placed++;
+    if (bucket === item.correct) correct++;
+  });
+  // Score: only count placed items
+  if (placed === 0) {
+    const el = document.getElementById('scoreF');
+    el.textContent = 'Place words first';
+    el.className = 'score-badge show retry';
+    return;
+  }
+  // Visually mark each chip
+  ejFBuckets.slice(1).forEach(bucket => {
+    const cont = document.getElementById(`ejF_${bucket}`);
+    [...cont.children].forEach(chip => {
+      const word = chip.dataset.word;
+      const item = ejFData.find(d => d.word === word);
+      const ok = item.correct === bucket;
+      chip.style.outline = ok ? '3px solid var(--correct)' : '3px solid var(--wrong)';
+      chip.style.outlineOffset = '2px';
+    });
+  });
+  showScore('scoreF', correct, ejFData.length);
+}
+
+function resetEjF() {
+  Object.keys(ejFState).forEach(k => delete ejFState[k]);
+  ejFRender();
+  document.getElementById('scoreF').className = 'score-badge';
+  document.getElementById('scoreF').textContent = '';
+}
+
+// ── EJERCICIO G — Vocabulary in context ────────────
+const ejGData = [
+  { before: 'Shakira es',                                                after: 'y es una cantante muy famosa.',  accepted: ['colombiana'] },
+  { before: 'Una persona que trabaja mucho es',                          after: '.',                              accepted: ['trabajadora', 'trabajador'] },
+  { before: 'No me gusta hablar mucho en público. Yo soy',               after: '.',                              accepted: ['tímido', 'tímida'] },
+  { before: 'Steven Spielberg es',                                       after: 'y es un cineasta muy famoso.',   accepted: ['estadounidense'] },
+  { before: 'Una persona que tiene muchas ideas originales es',          after: '.',                              accepted: ['creativa', 'creativo'] },
+  { before: 'Lionel Messi es',                                           after: 'y es un deportista talentoso.',  accepted: ['argentino'] },
+  { before: 'Frida Kahlo es una',                                        after: 'mexicana muy famosa.',           accepted: ['artista'] },
+  { before: 'Bill Gates dona mucho dinero a otras personas. Él es',      after: '.',                              accepted: ['generoso'] },
+];
+buildFillExercise(ejGData, 'G', 'ejG');
+function checkEjG() { checkFillExercise(ejGData, 'G', 'scoreG'); }
+function resetEjG() { resetFillExercise(ejGData, 'G', 'scoreG'); }
+
+// ── EJERCICIO H — Classroom expressions ────────────
+// Open-ended; multiple natural phrasings accepted.
+const ejHData = [
+  { before: 'Profesora habla muy rápido y no comprendes →', verb: '', after: '',
+    accepted: ['más despacio por favor', 'hable más despacio', 'puede hablar más despacio', 'no comprendo', 'no entiendo'] },
+  { before: 'Quieres saber cómo decir "backpack" →', verb: '', after: '',
+    accepted: ['¿cómo se dice backpack?', 'cómo se dice backpack', 'cómo se dice "backpack" en español', '¿cómo se dice backpack en español?'] },
+  { before: 'No conoces el significado de "perezoso" →', verb: '', after: '',
+    accepted: ['¿qué significa perezoso?', 'qué significa perezoso', '¿qué quiere decir perezoso?'] },
+  { before: 'Quieres que repita la pregunta →', verb: '', after: '',
+    accepted: ['repita por favor', 'puede repetir', '¿puede repetir?', 'repita la pregunta', '¿puede repetir la pregunta?'] },
+  { before: 'Necesitas hacer una pregunta →', verb: '', after: '',
+    accepted: ['tengo una pregunta', '¿puedo hacer una pregunta?', 'puedo hacer una pregunta'] },
+  { before: 'Quieres saber cómo se escribe "Guatemala" →', verb: '', after: '',
+    accepted: ['¿cómo se escribe guatemala?', 'cómo se escribe guatemala', '¿cómo se deletrea guatemala?'] },
+];
+buildFillExercise(ejHData, 'H', 'ejH');
+function checkEjH() { checkFillExercise(ejHData, 'H', 'scoreH'); }
+function resetEjH() { resetFillExercise(ejHData, 'H', 'scoreH'); }
+
+// ── EJERCICIO I PART A — Reading comprehension ─────
+// Open-ended answers; we check if the answer contains key terms.
+const ejIAData = [
+  { q: '1. ¿De qué nacionalidad es Carmen? ¿Y Lucía?',
+    keywords: ['puertorriqueña', 'colombiana'],
+    sample: 'Carmen es puertorriqueña y Lucía es colombiana.' },
+  { q: '2. Escribe TRES adjetivos que describen a Lucía:',
+    keywords: ['simpática', 'inteligente', 'trabajadora'],
+    minMatch: 3,
+    sample: 'simpática, inteligente, trabajadora' },
+  { q: '3. ¿De qué nacionalidad es la profesora Ramírez?',
+    keywords: ['mexicana'],
+    sample: 'Es mexicana.' },
+  { q: '4. ¿Cómo es la profesora Ramírez? (escribe 2 adjetivos)',
+    keywords: ['divertida', 'carismática'],
+    minMatch: 2,
+    sample: 'divertida y carismática' },
+  { q: '5. Escribe DOS actividades que hacen en la clase de la Dra. Ramírez:',
+    keywords: ['música', 'cuentos', 'composiciones', 'leen', 'leemos', 'escuchan', 'escuchamos', 'escriben', 'escribimos'],
+    minMatch: 2,
+    sample: 'Escuchan música y escriben composiciones.' },
+  { q: '6. ¿Quién es la cantante favorita de Carmen y de qué nacionalidad es?',
+    keywords: ['shakira', 'colombiana'],
+    minMatch: 2,
+    sample: 'Shakira, colombiana.' },
+  { q: '7. ¿De qué nacionalidad es el actor favorito de Carmen?',
+    keywords: ['estadounidense'],
+    sample: 'Estadounidense.' },
+];
+
+function buildEjIA() {
+  const c = document.getElementById('ejI_A');
+  ejIAData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div style="font-size:0.9rem;margin-bottom:6px">${item.q}</div>
+        <input class="blank-input" id="eIA_${i}" type="text" placeholder="Tu respuesta…" style="width:100%" autocomplete="off" spellcheck="false">
+        <div class="feedback" id="fbIA_${i}"></div>
+      </div>`;
+    c.appendChild(div);
+  });
+}
+buildEjIA();
+
+function checkEjIA() {
+  let correct = 0;
+  ejIAData.forEach((item, i) => {
+    const inp = document.getElementById(`eIA_${i}`);
+    const fb = document.getElementById(`fbIA_${i}`);
+    const ans = normalize(inp.value);
+    const minMatch = item.minMatch || item.keywords.length;
+    const matches = item.keywords.filter(k => ans.includes(normalize(k))).length;
+    const ok = matches >= minMatch;
+    inp.className = 'blank-input ' + (ok ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll('#ejI_A .exercise-item')[i].className = 'exercise-item ' + (ok ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? '✓ ¡Correcto!' : `✗ Sample answer: ${item.sample}`;
+    if (ok) correct++;
+  });
+  showScore('scoreIA', correct, ejIAData.length);
+}
+
+function resetEjIA() {
+  ejIAData.forEach((_, i) => {
+    const inp = document.getElementById(`eIA_${i}`);
+    inp.value = ''; inp.className = 'blank-input';
+    document.getElementById(`fbIA_${i}`).className = 'feedback';
+    document.querySelectorAll('#ejI_A .exercise-item')[i].className = 'exercise-item';
+  });
+  document.getElementById('scoreIA').className = 'score-badge';
+}
+
+// ── EJERCICIO I PART B — True/False ────────────────
+const ejIBData = [
+  { stmt: 'Carmen es de México.',                                       answer: 'F', why: 'Carmen es puertorriqueña, vive en Texas.' },
+  { stmt: 'Lucía es trabajadora e inteligente.',                        answer: 'V', why: 'El texto la describe como simpática, inteligente y trabajadora.' },
+  { stmt: 'La profesora Ramírez es seria y antipática.',                answer: 'F', why: 'Ella es divertida y carismática.' },
+  { stmt: 'En la clase de la Dra. Ramírez escuchan música en español.', answer: 'V', why: 'Sí — escuchan música, leen cuentos cortos, escriben composiciones.' },
+  { stmt: 'A Carmen le gusta una cantante argentina.',                  answer: 'F', why: 'A Carmen le gusta Shakira, que es colombiana.' },
+  { stmt: 'Los viernes Carmen y Lucía van al cine.',                    answer: 'V', why: 'Sí — el texto dice "Los viernes vamos al cine".' },
+];
+
+function buildEjIB() {
+  const c = document.getElementById('ejI_B');
+  ejIBData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'exercise-item';
+    div.innerHTML = `
+      <span class="item-num">${i+1}.</span>
+      <div class="item-text">
+        <div class="fill-sentence">
+          <input class="blank-input" id="eIB_${i}" type="text" placeholder="V/F" maxlength="1" style="width:60px;text-align:center;text-transform:uppercase" autocomplete="off" spellcheck="false">
+          <span>${item.stmt}</span>
+        </div>
+        <div class="feedback" id="fbIB_${i}"></div>
+      </div>`;
+    c.appendChild(div);
+  });
+}
+buildEjIB();
+
+function checkEjIB() {
+  let correct = 0;
+  ejIBData.forEach((item, i) => {
+    const inp = document.getElementById(`eIB_${i}`);
+    const fb = document.getElementById(`fbIB_${i}`);
+    const ok = normalize(inp.value) === normalize(item.answer);
+    inp.className = 'blank-input ' + (ok ? 'correct-input' : 'wrong-input');
+    document.querySelectorAll('#ejI_B .exercise-item')[i].className = 'exercise-item ' + (ok ? 'correct' : 'wrong');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? `✓ ¡Correcto! ${item.why}` : `✗ Answer: ${item.answer}. ${item.why}`;
+    if (ok) correct++;
+  });
+  showScore('scoreIB', correct, ejIBData.length);
+}
+
+function resetEjIB() {
+  ejIBData.forEach((_, i) => {
+    const inp = document.getElementById(`eIB_${i}`);
+    inp.value = ''; inp.className = 'blank-input';
+    document.getElementById(`fbIB_${i}`).className = 'feedback';
+    document.querySelectorAll('#ejI_B .exercise-item')[i].className = 'exercise-item';
+  });
+  document.getElementById('scoreIB').className = 'score-badge';
+}
+
+// ── EJERCICIO K — Composition with auto-save ───────
+const COMPOS_KEY = 'sem5_composicion_draft';
+const composArea = document.getElementById('composicion');
+
+// Restore on load
+try {
+  const saved = localStorage.getItem(COMPOS_KEY);
+  if (saved) composArea.value = saved;
+} catch (e) { /* ignore */ }
+
+function _updateComposStats() {
+  const text = composArea.value;
+  const chars = text.length;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  // Sentence detection: split on . ! ? but ignore trailing whitespace-only chunks
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+  document.getElementById('composWords').textContent = words;
+  document.getElementById('composSentences').textContent = sentences;
+  document.getElementById('composChars').textContent = chars;
+  // Target indicator
+  const target = document.getElementById('composTarget');
+  if (sentences === 0) target.textContent = '';
+  else if (sentences < 6) target.textContent = `· necesitas ${6 - sentences} más para llegar a 6`;
+  else if (sentences <= 8) target.textContent = '· ✓ en el rango 6–8';
+  else target.textContent = `· ⚠ tienes ${sentences - 8} de más`;
+}
+
+function _saveCompos() {
+  try { localStorage.setItem(COMPOS_KEY, composArea.value); } catch (e) {}
+  _updateComposStats();
+}
+composArea.addEventListener('input', _saveCompos);
+_updateComposStats();
+
+function copyComposicion() {
+  const msg = document.getElementById('composMsg');
+  const showMsg = (text, cls) => {
+    msg.textContent = text;
+    msg.className = 'score-badge show ' + cls;
+    setTimeout(() => { msg.textContent = ''; msg.className = 'score-badge'; }, 2500);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(composArea.value)
+      .then(() => showMsg('✓ Copiado', 'good'))
+      .catch(() => showMsg('✗ Cópialo manualmente', 'retry'));
+  } else {
+    showMsg('Copy not supported', 'retry');
+  }
+}
+
+function clearComposicion() {
+  if (!confirm('Borrar toda la composición? · Clear the entire composition? This cannot be undone.')) return;
+  composArea.value = '';
+  _saveCompos();
+}
+</script>
+
+</body>
+</html>
